@@ -1,0 +1,33 @@
+[package]
+name = "rusc"
+version = "0.0.0"
+authors = ["Chris Joel <chris@scriptolo.gy>"]
+edition = "2018"
+license = "ISC"
+readme = "README.md"
+
+[features]
+hifive1_board = ["hifive1", "embedded-hal", "riscv", "riscv-rt"]
+st7735_display = ["st7735-lcd"]
+
+[dependencies]
+embedded-graphics = "0.7.0-alpha.1"
+panic-halt = "0.2.0"
+
+embedded-hal = { version = "0.2.3", optional = true }
+st7735-lcd = { version = "0.8.0-alpha.1", optional = true }
+hifive1 = { version = "0.9.0", features = ["board-hifive1-revb"], optional = true }
+riscv = { version = "0.6.0", optional = true }
+riscv-rt = { version = "0.8.0", optional = true }
+
+# this lets you use `cargo fix`!
+[[bin]]
+name = "rusc"
+required-features = ["hifive1_board", "st7735_display"]
+test = false
+bench = false
+
+[profile.release]
+codegen-units = 1 # better optimizations
+# debug = true # symbols are nice and they don't increase the size on Flash
+lto = true # better optimizations

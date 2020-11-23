@@ -1,0 +1,6 @@
+{
+  "rust-analyzer.cargo.features": [
+    "hifive1_board",
+    "st7735_display"
+  ]
+}

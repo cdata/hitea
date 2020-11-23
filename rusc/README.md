@@ -1,0 +1,5 @@
+- Run `./scripts/bootstrap.sh` to get set up with development tools
+- Source `./env` to ensure that the RiscV toolchain is on your path
+- Run `./scripts/debugger.sh` to start the JLink GDB server
+- Install `screen` to view console output on a HiFive
+- `cargo run`
